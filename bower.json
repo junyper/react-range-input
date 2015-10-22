@@ -1,0 +1,24 @@
+{
+  "name": "react-range-input",
+  "version": "0.0.0",
+  "homepage": "https://github.com/junyper/react-range-input",
+  "authors": [
+    "Jennifer Stern <jstern@instructure.com>"
+  ],
+  "description": "react html5 range input component",
+  "main": "dist/react-range-input.js",
+  "keywords": [
+    ""
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "**/__tests__",
+    "build",
+    "examples",
+    "lib",
+    "node_modules",
+    "package.json",
+    "CONTRIBUTING.md"
+  ]
+}

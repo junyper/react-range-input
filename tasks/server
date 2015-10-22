@@ -1,4 +1,3 @@
 #!/bin/bash
 
-webpack-dev-server --inline --hot -d --progress --config webpack.dev.js --content-base examples/ "$@"
-#webpack-dev-server --config webpack.dev.config.js --hot --progress --port 2992 --inline -d
+webpack-dev-server --inline --hot -d --progress --config webpack.config.js --content-base examples/ "$@"

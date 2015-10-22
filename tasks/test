@@ -1,4 +1,4 @@
 #!/bin/bash
 
-eslint -c .eslintrc lib examples && \
+eslint -c .eslintrc lib && \
 NODE_ENV=test karma start karma.conf.js "$@"

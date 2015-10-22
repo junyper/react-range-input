@@ -13,6 +13,9 @@ mkdir -p dist
 eval $BUILD
 eval "MINIFY=1 $BUILD"
 
+# Generate examples
+MINIFY=1 webpack --config webpack.config.js
+
 # Copy package
 cp README.md build/
 node -p 'p=require("./package");p.scripts=p.devDependencies=undefined;JSON.stringify(p,null,2)' > build/package.json

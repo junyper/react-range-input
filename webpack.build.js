@@ -1,43 +1,36 @@
 /* eslint no-var: 0 */
 
 var path = require('path');
-var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+var config = require('./webpack.base.js');
 
 var BASE_DIR = process.cwd();
-var COMPONENT_FILE = 'react-range-input';
-var COMPONENT_NAME = 'react-range-input';
-var plugins = [];
+var PKG = require(path.resolve(BASE_DIR, 'package.json'));
+var FILE_NAME = PKG.name;
 
-function getPackageMain() {
-  return require(path.resolve(BASE_DIR, 'package.json')).main;
+if (process.env.MINIFY) {
+  FILE_NAME += '.min';
 }
 
 if (process.env.MINIFY) {
-  plugins.push(
-    new webpack.optimize.UglifyJsPlugin()
+  config.plugins.push(
+    new ExtractTextPlugin(FILE_NAME + '.css')
   );
-  COMPONENT_FILE += '.min';
 }
 
-module.exports = {
-  entry: path.resolve(BASE_DIR, getPackageMain()),
-  output: {
-    filename: path.resolve(BASE_DIR, 'dist/' + COMPONENT_FILE + '.js'),
-    library: COMPONENT_NAME,
-    libraryTarget: 'umd'
-  },
-  externals: {
-    'react': 'React',
-    'react/addons': 'React'
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      }
-    ]
-  },
-  plugins: plugins
+config.entry = path.resolve(BASE_DIR, PKG.main);
+
+config.output = {
+  path: path.resolve(BASE_DIR, 'dist/'),
+  filename: FILE_NAME + '.js',
+  library: PKG.name,
+  libraryTarget: 'umd'
 };
+
+config.externals = {
+  'react': 'React',
+  'react/addons': 'React'
+};
+
+module.exports = config;

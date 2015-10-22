@@ -23,13 +23,13 @@ module.exports = function(config) {
   var conf = {
     basePath: '',
 
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'chai'],
 
     files: tests,
 
     preprocessors: {},
 
-    reporters: ['dots'],
+    reporters: ['mocha'],
 
     port: 9876,
 
@@ -45,19 +45,7 @@ module.exports = function(config) {
 
     singleRun: true,
 
-    webpack: {
-      cache: true,
-      devtool: 'inline-source-map',
-      module: {
-        loaders: [
-          {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader'
-          }
-        ]
-      }
-    },
+    webpack: require('./webpack.test.js'),
 
     webpackServer: {
       stats: {

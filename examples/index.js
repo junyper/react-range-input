@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import RangeInput from './index';
+import RangeInput from '../lib/index';
 
 const Examples = React.createClass({
   render() {

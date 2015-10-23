@@ -15,7 +15,7 @@
   "scripts": {
     "start": "./tasks/server",
     "test": "./tasks/test",
-    "debug": "./tasks/test --no-single-run",
+    "debug": "./tasks/test --no-single-run --browsers Chrome",
     "upgrade": "./tasks/upgrade && ./tasks/test",
     "clean": "./tasks/clean",
     "build": "./tasks/build",

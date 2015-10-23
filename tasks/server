@@ -1,3 +1,0 @@
-#!/bin/bash
-
-webpack-dev-server --inline --hot -d --progress --config webpack.config.js --content-base examples/__build__ "$@"

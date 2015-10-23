@@ -23,16 +23,16 @@ git push origin :gh-pages
 npm run build
 
 # remove superfluous files
-find . -type f | egrep -v ".git/|examples/" | xargs rm
+find . -type f | egrep -v ".git/|examples/__build__/" | xargs rm
 find . -type d -empty -delete
 rm -rf node_modules
 
 # move example files to root
-mv examples/* ./
+mv examples/__build__/* ./
 rm -rf examples/
 
 # add jekyll config
-echo "include: [__build__]" > _config.yml
+#echo "include: [__build__]" > _config.yml
 
 # create gh-pages branch
 git checkout -b gh-pages
